@@ -163,7 +163,7 @@ public class Board extends Application {
          * @param col The column in which this peg will appear in the secret code.
          */
         Peg(MMPeg peg, int col) {
-            super(Board.class.getResource(URI_BASE + peg.toString() + ".png").toString());
+            super(Board.class.getResource(URI_BASE + peg.toString().toLowerCase() + ".png").toString());
             setLayoutY(SOLUTION_ROW_OFFSET);
             setLayoutX(COL_OFFSET + (col * COL_PITCH));
         }
@@ -175,7 +175,7 @@ public class Board extends Application {
          * @param col The column in which this peg is to appear.
          */
         Peg(MMPeg peg, int row, int col) {
-            super(Board.class.getResource(URI_BASE + peg.toString() + ".png").toString());
+            super(Board.class.getResource(URI_BASE + peg.toString().toLowerCase() + ".png").toString());
             setLayoutY(ROW_OFFSET + (row * ROW_PITCH));
             setLayoutX(COL_OFFSET + (col * COL_PITCH));
         }
@@ -201,7 +201,7 @@ public class Board extends Application {
          * @param board The board with which this draggable peg will interact.
          */
         DraggablePeg(MMPeg peg, Board board) {
-            super(Board.class.getResource(URI_BASE + peg.toString() + ".png").toString());
+            super(Board.class.getResource(URI_BASE + peg.toString().toLowerCase() + ".png").toString());
             this.peg = peg;
             this.board = board;
             moveToStartpoint();
