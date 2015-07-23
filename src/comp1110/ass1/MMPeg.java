@@ -37,7 +37,7 @@ public enum MMPeg {
     static String colors() {
         String rtn = "";
         for (MMPeg color : MMPeg.values()) {
-            rtn = color.id + " ";
+            rtn += color.id + " ";
         }
         return rtn;
     }
