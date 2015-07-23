@@ -75,4 +75,16 @@ public class MMRow {
         rtn += "]";
         return rtn;
     }
+
+    /**
+     * @return a deep copy of this row
+     */
+    @Override
+    public MMRow clone() {
+        MMRow rtn = new MMRow();
+        for(int i = 0; i < PEGS; i++) {
+            rtn.pegs[i] = pegs[i];
+        }
+        return rtn;
+    }
 }

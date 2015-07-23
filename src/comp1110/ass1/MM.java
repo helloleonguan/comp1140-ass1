@@ -34,6 +34,16 @@ public class MM {
     /** A record of the guesses taken so far in the game */
     private static MMRow[] guesses = new MMRow[ROWS];
 
+    /** @return a deep copy of the guesses */
+    public static MMRow[] getGuesses() {
+        /* deep copy */
+        MMRow[] rtn = new MMRow[ROWS];
+        for (int i = 0; i < ROWS; i++) {
+            rtn[i] = (guesses[i] == null) ? null : guesses[i].clone();
+        }
+        return rtn;
+    }
+
     /** A record of the scores given so far in the game */
     private static MMScore[] scores = new MMScore[ROWS];
     /** @param turn the turn in question @return the score for a particular turn in the game */
