@@ -6,7 +6,7 @@ package comp1110.ass1;
 public class MMGuesser {
 
     /**
-     * Return a automatically generated guess.
+     * Return an automatically generated guess.
      *
      * @return A new guess.
      */

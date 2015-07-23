@@ -390,15 +390,17 @@ public class Board extends Application {
      * produce a generated guess for the current turn.
      */
     private void generatedGuess() {
-        currentRow = MMGuesser.guess();
+        if (inPlay) {
+            currentRow = MMGuesser.guess();
 
-        /* redraw the current row with the pegs in the guess */
-        for (int col = 0; col < MMRow.PEGS; col++) {
-            currentPegs.getChildren().add(new Peg(currentRow.getPeg(col), MM.getCurrentTurn(), col));
+            /* redraw the current row with the pegs in the guess */
+            for (int col = 0; col < MMRow.PEGS; col++) {
+                currentPegs.getChildren().add(new Peg(currentRow.getPeg(col), MM.getCurrentTurn(), col));
+            }
+
+            /* this turn is complete now */
+            completeTurn();
         }
-
-        /* this turn is complete now */
-        completeTurn();
     }
 
     /**
