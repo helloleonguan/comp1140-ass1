@@ -355,21 +355,7 @@ public class Board extends Application {
                 currentRow.setPeg(dpeg.peg, col);
                 setPegs++;
                 if (setPegs == MMRow.PEGS) {
-                    /* all of the pegs in the current row are now set, so the turn is complete */
-                    int turn = MM.getCurrentTurn();
-                    MM.addGuess(currentRow);
-                    currentRow = new MMRow();
-                    addScore(turn, MM.getScore(turn));
-                    addAdvice(turn, MM.getAdvice(turn));
-                    if (MM.getScore(turn).perfect()) {
-                        /* they guessed it */
-                        gameOver();
-                    } else if (MM.getCurrentTurn() == MM.ROWS - 1) {
-                        /* they exhausted their turns */
-                        gameOver();
-                    } else {
-                        setPegs = 0;
-                    }
+                    completeTurn();
                 }
             } else
                 currentRow.setPeg(dpeg.peg, col);
@@ -377,6 +363,42 @@ public class Board extends Application {
             /* in all of these cases, add the dropped peg to the board */
             currentPegs.getChildren().add(new Peg(dpeg.peg, row, col));
         }
+    }
+
+    /**
+     * All of the pegs are placed, so complete the turn.
+     */
+    private void completeTurn() {
+    /* all of the pegs in the current row are now set, so the turn is complete */
+        int turn = MM.getCurrentTurn();
+        MM.addGuess(currentRow);
+        currentRow = new MMRow();
+        addScore(turn, MM.getScore(turn));
+        addAdvice(turn, MM.getAdvice(turn));
+        if (MM.getScore(turn).perfect()) {
+            /* they guessed it */
+            gameOver();
+        } else if (MM.getCurrentTurn() == MM.ROWS) {
+            /* they exhausted their turns */
+            gameOver();
+        } else {
+            setPegs = 0;
+        }
+    }
+
+    /**
+     * produce a generated guess for the current turn.
+     */
+    private void generatedGuess() {
+        currentRow = MMGuesser.guess();
+
+        /* redraw the current row with the pegs in the guess */
+        for (int col = 0; col < MMRow.PEGS; col++) {
+            currentPegs.getChildren().add(new Peg(currentRow.getPeg(col), MM.getCurrentTurn(), col));
+        }
+
+        /* this turn is complete now */
+        completeTurn();
     }
 
     /**
@@ -427,6 +449,9 @@ public class Board extends Application {
         scene.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.M) {
                 toggleSoundLoop();
+                event.consume();
+            } else if (event.getCode() == KeyCode.G) {
+                generatedGuess();
                 event.consume();
             } else if (event.getCode() == KeyCode.Q) {
                 Platform.exit();

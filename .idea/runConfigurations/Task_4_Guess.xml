@@ -1,13 +1,13 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="Task 4 Wasteful" type="JUnit" factoryName="JUnit">
+  <configuration default="false" name="Task 4 Guess" type="JUnit" factoryName="JUnit">
     <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
     <module name="comp1110-ass1" />
     <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
     <option name="ALTERNATIVE_JRE_PATH" value="" />
     <option name="PACKAGE_NAME" value="comp1110.ass1" />
-    <option name="MAIN_CLASS_NAME" value="comp1110.ass1.MMAdviceTest" />
-    <option name="METHOD_NAME" value="testWasteful" />
-    <option name="TEST_OBJECT" value="method" />
+    <option name="MAIN_CLASS_NAME" value="comp1110.ass1.MMGuessTest" />
+    <option name="METHOD_NAME" value="" />
+    <option name="TEST_OBJECT" value="class" />
     <option name="VM_PARAMETERS" value="-ea" />
     <option name="PARAMETERS" value="" />
     <option name="WORKING_DIRECTORY" value="file://$MODULE_DIR$" />

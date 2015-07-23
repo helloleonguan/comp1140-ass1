@@ -53,13 +53,10 @@ In addition to those ground rules, you are to follow the rules one would normaly
 **Credit**
 * Task 3
 
-<a name="d"></a>
-**Distinction**
-* Task 4
-
 <a name="hd"></a>
 **High Distinction**
-* Task 5
+* Task 4
+
 
 **Note:** *you are not required to complete all elements of the assignment. Recall that the assignment is redeemable against the exam. The last part of the assignment is significantly harder than the others, but worth only one additional mark. I don't encourage you to spend too much time on this.*
 
@@ -85,10 +82,6 @@ In addition to those ground rules, you are to follow the rules one would normaly
 
     The `getScore()` method of `MMRow` always returns an empty score.  You need to fix this so that it returns the correct score.   Write code that compares the pegs in this row against the pegs in the `secretCode`, and generates the correct score.   Test your code using the `Task 3` run configuration. Once you are satisfied, update your [originality statement](originality.md), commit your work, and push to your repo.
 
-4.  **Add advice for wasteful moves.**
+4.  **Write your own solver.**
 
-    The `advise()` method within `MMAdvice` does not return useful advice.   In this step you should add the capability to identify any pegs that were placed '*wastefully*' in the sense that the score for a previous guess showed the set of pegs in the guess could not possibly all be useful.   This situation is shown in the second move in the example above, where the player uses *white* and *red*, even though the score for the first turn shows that only one of *red*, *white*, *blue*, and *black* could be in the secret code (the last move shows that it was *white*, in fact).   Your code should identify this kind of wasteful move by marking all of the affected pegs as a `badMove` in the `MMAdvice` object returned by this method.   Test your code using the `Task 4` run configuration. Once you are satisfied, update your [originality statement](originality.md), commit your work, and push to your repo.
-
-5. **Add further advice for bad moves**
-
-    There are other categories of bad move.   You should enhance your implementation of `MMAdvice.advise()` to report other kinds of bad move.  Test your code using the `Task 5` run configuration.  Once you are satisfied, update your [originality statement](originality.md), commit your work, 
+    The `guess()` method of `MMGuess` generates a guess based on the game state so far.   Unfortunately right now it just returns a random guess.  In this question you need to write a better guesser.   You may use any technique you like, including [existing ones](https://en.wikipedia.org/wiki/Mastermind_(board_game)#Algorithms).  This is worth only one mark, but may take considerable time, so use your discretion.  Once you are satisfied, update your [originality statement](originality.md), commit your work, and push to your repo.
