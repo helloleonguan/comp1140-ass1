@@ -53,6 +53,10 @@ public class MMScoreTest {
         score = guess.getScore(code);
         assertTrue("Incorrect score "+score+" != "+correct+" for guess "+guess+" with code "+code, score.equals(correct));
 
+        guess = MMRow.create("BBGA");
+        score = guess.getScore(code);
+        assertTrue("Incorrect score "+score+" != "+correct+" for guess "+guess+" with code "+code, score.equals(correct));
+
         code = MMRow.create("YYYB");
 
         guess = MMRow.create("BBBB");
