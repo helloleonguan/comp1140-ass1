@@ -6,8 +6,8 @@
 
 I declare that the work I have submitted for assignment one is entirely my own work, with the following documented exceptions:
 
-* The idea of <...> came from a discussion with <...>
+* The idea of <null> came from a discussion with <null>
 
-* The code in class <...> uses an idea suggested by <...>
+* The code in class <null> uses an idea suggested by <null>
 
-Signed: Mary Jones (u2345678)
+Signed: Liyang(Leon) Guan (u5684206)

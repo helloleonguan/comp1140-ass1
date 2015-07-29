@@ -48,8 +48,22 @@ public class MMRow {
      * @return An MMRow object where each peg is randomly chosen.
      */
     public static MMRow create() {
-        /* FIXME */
-        return create("RGBY");
+        /*Generate a random number(0-5) 4 times to form a MMRow*/
+        String colors = "";
+        for (int i = 0; i < 4 ; i++ ) {
+            Random rand = new Random();
+            int spot = rand.nextInt(6);
+            switch (spot)
+            {
+                case 0: colors = colors + "B"; break;
+                case 1: colors = colors + "W"; break;
+                case 2: colors = colors + "R"; break;
+                case 3: colors = colors + "G"; break;
+                case 4: colors = colors + "A"; break;
+                case 5: colors = colors + "Y"; break;
+            }
+        }
+        return create(colors);
     }
 
     /**
@@ -58,8 +72,42 @@ public class MMRow {
      * @return An MMScore object that reflects the score for this guess given the secretCode
      */
     public MMScore getScore(MMRow secretCode) {
-        /* FIXME */
-        return new MMScore(0,0);
+        /*
+        * Using an array to denote whether it is in the correct spot or only get the color right.
+        * 0 stands for wrong peg
+        * 1 stands for the color is right but in wrong spot
+        * 2 stands for the peg in the right spot
+        */
+        int a = 0;
+        int b = 0;
+        int flags[];
+        flags = new int[4];
+
+        for (int i = 0; i < 4 ; i ++) {
+            if (this.getPeg(i) == secretCode.getPeg(i))
+            {
+                flags[i] = 2;
+                continue;
+            }
+            for (int j = 0; j < 4 ; j ++ ) {
+                if (this.getPeg(i) == secretCode.getPeg(j) && secretCode.getPeg(j) != this.getPeg(j) && flags[j] == 0)
+                {
+                    flags[j] = 1;
+                    break;
+                }
+            }
+        }
+
+        for (int i = 0; i < 4 ; i++ ) {
+            if (flags[i] == 2) {
+                a ++;
+            }
+
+            if (flags[i] == 1) {
+                b ++;
+            }
+        }
+        return new MMScore(a,b);
     }
 
     /**

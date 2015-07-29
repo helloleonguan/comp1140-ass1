@@ -10,8 +10,10 @@ public class MMGuesser {
      *
      * @return A new guess.
      */
+    /*BWRGAY*/
+
     public static MMRow guess() {
-        /* FIXME */
-        return MMRow.create();
+    	
+        return MMRow.create("RRRR");
     }
 }
