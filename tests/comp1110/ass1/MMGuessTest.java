@@ -22,9 +22,6 @@ public class MMGuessTest {
                 MM.addGuess(guess);
                 won = MM.getScore(turn).perfect();
                 System.out.println(turn + " " + guess + "->" + MM.getScore(turn));
-                MMAdvice advice = MM.getAdvice(turn);
-                boolean[] bm = advice.getBadMove();
-                assertTrue("Guesser should never make bad guesses", (!bm[0] && !bm[1] && !bm[2] && !bm[3]));
                 turn++;
             }
             assertTrue("Need to be able to complete in " + MM.ROWS + " turns", turn < MM.ROWS);
