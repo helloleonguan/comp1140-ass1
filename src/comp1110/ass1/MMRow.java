@@ -50,7 +50,7 @@ public class MMRow {
     public static MMRow create() {
         /*Generate a random number(0-5) 4 times to form a MMRow*/
         String colors = "";
-        for (int i = 0; i < 4 ; i++ ) {
+        for (int i = 0; i < PEGS ; i++ ) {
             Random rand = new Random();
             int spot = rand.nextInt(6);
             switch (spot)
@@ -78,18 +78,21 @@ public class MMRow {
         * 1 stands for the color is right but in wrong spot
         * 2 stands for the peg in the right spot
         */
+        if (this==null)
+            return new MMScore (0,0);
+
         int a = 0;
         int b = 0;
         int flags[];
-        flags = new int[4];
+        flags = new int[PEGS];
 
-        for (int i = 0; i < 4 ; i ++) {
+        for (int i = 0; i < PEGS ; i ++) {
             if (this.getPeg(i) == secretCode.getPeg(i))
             {
                 flags[i] = 2;
                 continue;
             }
-            for (int j = 0; j < 4 ; j ++ ) {
+            for (int j = 0; j < PEGS ; j ++ ) {
                 if (this.getPeg(i) == secretCode.getPeg(j) && secretCode.getPeg(j) != this.getPeg(j) && flags[j] == 0)
                 {
                     flags[j] = 1;
@@ -98,7 +101,8 @@ public class MMRow {
             }
         }
 
-        for (int i = 0; i < 4 ; i++ ) {
+        /*Counting*/
+        for (int i = 0; i < PEGS ; i++ ) {
             if (flags[i] == 2) {
                 a ++;
             }
