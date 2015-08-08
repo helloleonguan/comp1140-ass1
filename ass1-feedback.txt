@@ -1,0 +1,9 @@
+Task 1: Good use of git. Try and use your name instead of UID as your username in commits for future. 2/2
+Task 2: Passes. 1/1
+Task 3: Passes. Reasonable code quality. 1/1
+Task 4: Doesn't pass, reasonable attempt. 0.5/1
+Total: 4.5/5
+
+MMRow.create creates a new random instance for each iteration of the loop. A single instance should have been created before the loop.
+MMGuesser.guess performs a somewhat expensive operation each time it is called (generating all possible cases) even though this data isn't changed. It should be generated once, stored, then reused.
+I can't quite determine what is wrong with your MMGuesser.guess method as the logic isn't particularly simple to follow. I would hazard a guess that it is something to do with your "minimax" section but as I am unsure what the purpose of eliminationCounter is I cannot really say. Sorry!
